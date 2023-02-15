@@ -11,7 +11,11 @@ const Calculator = () => {
 	const inputCurrent = useCallback((symbol) => {
 		setCurrent((prev) => {
 			if (symbol === ',') {
-				return prev + symbol
+				if (prev.indexOf(',') === -1) {
+					return prev + symbol
+				} else {
+					return prev
+				}
 			}
 			else if (prev === '0') {
 				return symbol

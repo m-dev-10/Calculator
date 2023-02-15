@@ -1,19 +1,12 @@
 
 export const Calculate = (queue) => {
-	console.log('0', queue)
 	let result = ''
 	result = commasToDots(queue)
-	console.log('1', result)
 	result = calculatePercents(result)
-	console.log('2', result)
 	result = calculateRoots(result)
-	console.log('3', result)
 	result = calculateMultDevide(result)
-	console.log('4', result)
 	result = calculatePlusMinus(result)
-	console.log('5', result)
 	result = round(result)
-	console.log('6', result)
 	return result
 }
 
@@ -35,8 +28,6 @@ const commasToDots = (queue) => {
 }
 
 const calculatePercents = (queue) => {
-
-	//let subArr1,subArr2,subStr,go1:boolean,go2:boolean,percentRes, result = queue
 	let percentRes, index, result = queue
 	while (result.indexOf('%') !== -1) {
 		index = result.indexOf('%')
