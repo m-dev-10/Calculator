@@ -1,0 +1,68 @@
+.button__container {
+	transition: 0.3s ease 0s;
+	flex: 0 1 20%;
+	border-radius: 50%;
+	// padding: 0px 10px;
+	&:hover {
+		cursor: pointer;
+		background-color: #4b7ac0;
+	}
+	&:active {
+		background-color: #28518e;
+	}
+}
+
+.button {
+	font-family: "Geometria", sans-serif;
+	font-weight: 500;
+	background: none;
+	border: none;
+	color: #f2f2f2;
+	font-size: 36px;
+	line-height: 2;
+	min-height: 80px;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	cursor: pointer;
+	transition: 0.3s ease 0s;
+	& img {
+		vertical-align: baseline;
+		width: 26px;
+		height: 26px;
+		@media (max-width: 640px) {
+			width: 22px;
+			height: 22px;
+		}
+		@media (max-width: 520px) {
+			width: 18px;
+			height: 18px;
+		}
+	}
+	@media (max-width: 640px) {
+		font-size: 30px;
+		min-height: 60px;
+	}
+	@media (max-width: 520px) {
+		font-size: 24px;
+		min-height: 40px;
+	}
+}
+
+.button__container_white {
+	background-color: #fff;
+	&:hover {
+		background-color: #ff7b7b;
+	}
+	&:active {
+		background-color: #ffa2a2;
+	}
+}
+
+.button_white {
+	color: #4b7ac0;
+}
+
+.button__container_white:hover .button_white {
+	color: #ffff;
+}

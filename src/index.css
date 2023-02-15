@@ -1,0 +1,65 @@
+*,
+* ::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+li {
+	list-style: none;
+}
+a {
+	color: inherit;
+}
+a,
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+img {
+	vertical-align: top;
+}
+
+body,
+html {
+	height: 100%;
+	line-height: 1;
+}
+
+@font-face {
+	font-family: "Geometria";
+	src: url("../src/assets/fonts/AnyConv.com__geometria_bold.woff2") format("woff2"), url("../src/assets/fonts/AnyConv.com__geometria_bold.woff") format("woff");
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Geometria";
+	src: url("../src/assets/fonts/AnyConv.com__geometria_medium.woff2") format("woff2"), url("../src/assets/fonts/AnyConv.com__geometria_medium.woff") format("woff");
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+}
+
+body {
+	font-family: "Geometria", sans-serif;
+	font-weight: 500;
+	color: #f2f2f2;
+	font-size: 24px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: linear-gradient(122.76deg, #ffa2a2 4.09%, #ff7b7b 91.04%), #ffffff;
+}

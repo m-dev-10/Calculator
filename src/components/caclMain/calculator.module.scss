@@ -1,0 +1,112 @@
+.calculate {
+	// margin: 34px 0 45px 0;
+}
+
+.calculate__container {
+	background-color: #ffa6a6;
+	max-width: 616px;
+	margin: 0px auto;
+	padding: 31px 38px;
+	border-radius: 18px;
+}
+
+.calculate__body {
+	max-width: 540px;
+	padding: 100px 47px 44px 47px;
+	border-radius: 18px;
+	background: linear-gradient(155.23deg, #28518e 0%, #3a77d1 100%);
+	box-shadow: 0px 82px 158px rgba(0, 0, 0, 0.35), 0px 24.7206px 47.6324px rgba(0, 0, 0, 0.228056), 0px 10.2677px 19.7841px rgba(0, 0, 0, 0.175), 0px 3.71362px 7.1555px rgba(0, 0, 0, 0.121944);
+}
+
+.calculate__scoreBoard {
+	text-align: right;
+	border-bottom: 2px solid #799acc;
+	& *:not(:last-child) {
+		margin: 0px 0px 30px 0px;
+	}
+}
+
+.calculate__description {
+	font-size: 24px;
+	line-height: 1.33;
+	min-height: 30px;
+}
+
+.calculate__result {
+	font-weight: 700;
+	font-size: 56px;
+	line-height: 1.43;
+	overflow: hidden;
+}
+
+.calculate__dashBoard {
+	padding: 37px 0px 0px 0px;
+	user-select: none;
+}
+
+.buttons {
+	display: flex;
+	flex-wrap: wrap;
+	// margin: 0px -10px;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	row-gap: 16px;
+	column-gap: 23px;
+}
+
+@media (max-width: 640px) {
+	.calculate__container {
+		max-width: 500px;
+		padding: 24px 26px;
+	}
+	.calculate__body {
+		max-width: 480px;
+		padding: 70px 30px 25px 30px;
+	}
+	.calculate__scoreBoard {
+		& *:not(:last-child) {
+			margin: 0px 0px 15px 0px;
+		}
+	}
+
+	.calculate__dashBoard {
+		padding: 20px 0px 0px 0px;
+	}
+	.calculate__description {
+		font-size: 18px;
+		line-height: 1.33;
+	}
+	.calculate__result {
+		font-weight: 700;
+		font-size: 40px;
+		line-height: 1.43;
+	}
+	.buttons {
+		row-gap: 10px;
+		column-gap: 15px;
+	}
+}
+
+@media (max-width: 520px) {
+	.calculate__container {
+		max-width: 340px;
+		padding: 18px 18px;
+	}
+	.calculate__body {
+		max-width: 290px;
+		padding: 60px 20px 20px 20px;
+	}
+	.calculate__scoreBoard {
+		& *:not(:last-child) {
+			margin: 0px 0px 10px 0px;
+		}
+	}
+	.calculate__dashBoard {
+		padding: 15px 0px 0px 0px;
+	}
+	.buttons {
+		row-gap: 5px;
+		column-gap: 10px;
+	}
+}
