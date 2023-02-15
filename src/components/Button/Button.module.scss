@@ -39,8 +39,12 @@
 			height: 18px;
 		}
 	}
+	@media (max-width: 1600px) {
+		font-size: 34px;
+		min-height: 60px;
+	}
 	@media (max-width: 640px) {
-		font-size: 30px;
+		font-size: 26px;
 		min-height: 60px;
 	}
 	@media (max-width: 520px) {

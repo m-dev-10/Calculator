@@ -36,30 +36,13 @@ const commasToDots = (queue) => {
 
 const calculatePercents = (queue) => {
 
-	let subArr1, subArr2, subStr, go1, go2, percentRes, result = queue
-
+	//let subArr1,subArr2,subStr,go1:boolean,go2:boolean,percentRes, result = queue
+	let percentRes, index, result = queue
 	while (result.indexOf('%') !== -1) {
-		let index = result.indexOf('%')
-		subArr1 = result.slice(0, index).split('').reverse()
-		subArr2 = result.slice(index + 1, result.length).split('')
+		index = result.indexOf('%')
 
-		go1 = true
-		go2 = true
-		subArr1 = subArr1.map((el) => {
-			if (/[\d.]/.test(el) && go1) {
-				return el
-			} else {
-				go1 = false
-			}
-		}).reverse().join('')
-		subArr2 = subArr2.map((el) => {
-			if (/[\d.]/.test(el) && go2) {
-				return el
-			} else {
-				go2 = false
-			}
-		}).join('')
-		subStr = subArr1 + result[index] + subArr2
+		const [subStr, subArr1, subArr2] = replaceSubStr(result, index, 2)
+
 		percentRes = Number(subArr1) / 100 * Number(subArr2)
 		result = result.replace(subStr, percentRes.toString())
 	}
@@ -73,17 +56,9 @@ const calculateRoots = (queue) => {
 
 	while (result.indexOf('√') !== -1) {
 		let index = result.indexOf('√')
-		subArr1 = result.slice(index + 1, result.length).split('')
 
-		go1 = true
-		subArr1 = subArr1.map((el) => {
-			if (/[\d.]/.test(el) && go1) {
-				return el
-			} else {
-				go1 = false
-			}
-		}).join('')
-		subStr = result[index] + subArr1
+		const [subStr, subArr1] = replaceSubStr(result, index, 1)
+
 		rootRes = Math.sqrt(Number(subArr1))
 		result = result.replace(subStr, rootRes.toString())
 	}
@@ -93,31 +68,12 @@ const calculateRoots = (queue) => {
 
 const calculateMultDevide = (queue) => {
 
-	let subArr1, subArr2, subStr, go1, go2, MultDevideRes, result = queue
+	let MultDevideRes, index, result = queue
 
 	while (result.search(/[×/]/) !== -1) {
-		let index = result.search(/[×/]/)
+		index = result.search(/[×/]/)
 
-		subArr1 = result.slice(0, index).split('').reverse()
-		subArr2 = result.slice(index + 1, result.length).split('')
-
-		go1 = true
-		go2 = true
-		subArr1 = subArr1.map((el) => {
-			if (/[\d.]/.test(el) && go1) {
-				return el
-			} else {
-				go1 = false
-			}
-		}).reverse().join('')
-		subArr2 = subArr2.map((el) => {
-			if (/[\d.]/.test(el) && go2) {
-				return el
-			} else {
-				go2 = false
-			}
-		}).join('')
-		subStr = subArr1 + result[index] + subArr2
+		const [subStr, subArr1, subArr2] = replaceSubStr(result, index, 2)
 
 		if (result[index] === '×') {
 			MultDevideRes = Number(subArr1) * Number(subArr2)
@@ -148,19 +104,6 @@ const calculatePlusMinus = (queue) => {
 	return subArr.map((el) => Number(el)).reduce((a, b) => a + b).toFixed(3).toString().replace('.', ',')
 }
 
-function findNumber(index, num, arr) {
-	if (/[+-]/.test(arr[index]) || index === arr.length) {
-		return num
-	}
-	if (/[\d.]/.test(arr[index])) {
-		if (arr[index - 1] === '-') {
-			num = '-' + num
-		}
-		num += arr[index]
-		return findNumber(index + 1, num, arr)
-	}
-}
-
 export const round = (queue) => {
 
 	let result = queue
@@ -179,4 +122,58 @@ export const round = (queue) => {
 	}
 
 	return result
+}
+///////////////////
+const replaceSubStr = (result, index, mode = 2) => {
+	let subArr1, subArr2, go1, go2, subStr
+
+	if (mode === 2) {
+		subArr1 = result.slice(0, index).split('').reverse()
+		subArr2 = result.slice(index + 1, result.length).split('')
+
+		go1 = true
+		go2 = true
+		subArr1 = subArr1.map((el) => {
+			if (/[\d.]/.test(el) && go1) {
+				return el
+			} else {
+				go1 = false
+			}
+		}).reverse().join('')
+		subArr2 = subArr2.map((el) => {
+			if (/[\d.]/.test(el) && go2) {
+				return el
+			} else {
+				go2 = false
+			}
+		}).join('')
+		subStr = subArr1 + result[index] + subArr2
+		return [subStr, subArr1, subArr2]
+	} else {
+		subArr1 = result.slice(index + 1, result.length).split('')
+
+		go1 = true
+		subArr1 = subArr1.map((el) => {
+			if (/[\d.]/.test(el) && go1) {
+				return el
+			} else {
+				go1 = false
+			}
+		}).join('')
+		subStr = result[index] + subArr1
+		return [subStr, subArr1]
+	}
+}
+
+function findNumber(index, num, arr) {
+	if (/[+-]/.test(arr[index]) || index === arr.length) {
+		return num
+	}
+	if (/[\d.]/.test(arr[index])) {
+		if (arr[index - 1] === '-') {
+			num = '-' + num
+		}
+		num += arr[index]
+		return findNumber(index + 1, num, arr)
+	}
 }
